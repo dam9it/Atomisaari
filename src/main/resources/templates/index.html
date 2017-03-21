@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Atomisaari</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Tarinat</h1>
+    <table>
+		<tr>
+		    <th>ID</th>
+		    <th>Kirjailija</th>
+		    <th>Tarina</th>
+		</tr>  
+    	<tr th:each = "story : ${stories}">
+    		<td th:text="${story.id}"></td>
+    		<td th:text="${story.author}"></td> 
+    		<td th:text="${story.stoori}"></td>
+    	</tr>
+     </table>
+  		 	<h2>Lisää tarinasi maailmalle</h2>
+	<div>
+		<form th:object="${story}" th:action="@{save}" action="#" method="post">
+		  	<label for="author">Taiteilija</label>
+			<input type="text" id="author" th:field="*{author}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="stoori">Tarina</label>
+			<input type="text" id="stoori" th:field="*{stoori}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+	
+			<input type="submit" value="Save"></input>
+		</form>
+	</div> 	
+</body>
+</html>
